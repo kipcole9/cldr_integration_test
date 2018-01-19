@@ -5,8 +5,6 @@
 # is restricted to this project.
 use Mix.Config
 
-config :locale_bug, LocaleBugWeb.Gettext, default_locale: "en", locales: ~w(en de)
-
 config :ex_cldr,
   gettext: LocaleBugWeb.Gettext
 
@@ -17,6 +15,8 @@ config :locale_bug, LocaleBugWeb.Endpoint,
   render_errors: [view: LocaleBugWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: LocaleBug.PubSub,
            adapter: Phoenix.PubSub.PG2]
+
+config :locale_bug, LocaleBugWeb.Gettext, default_locale: "en", locales: ~w(en de fr it es)
 
 # Configures Elixir's Logger
 config :logger, :console,
