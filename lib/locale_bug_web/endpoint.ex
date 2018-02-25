@@ -38,6 +38,11 @@ defmodule LocaleBugWeb.Endpoint do
     key: "_locale_bug_key",
     signing_salt: "fcyRODUv"
 
+  plug Cldr.Plug.SetLocale,
+    apps: [:gettext, :cldr],
+    from: [:path, :session],
+    gettext: LocaleBugWeb.Gettext
+
   plug LocaleBugWeb.Router
 
   @doc """

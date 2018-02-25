@@ -6,7 +6,8 @@
 use Mix.Config
 
 config :ex_cldr,
-  gettext: LocaleBugWeb.Gettext
+  gettext: LocaleBugWeb.Gettext,
+  locales: ["en", "nl", "pt"]
 
 # Configures the endpoint
 config :locale_bug, LocaleBugWeb.Endpoint,
@@ -16,7 +17,8 @@ config :locale_bug, LocaleBugWeb.Endpoint,
   pubsub: [name: LocaleBug.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
-config :locale_bug, LocaleBugWeb.Gettext, default_locale: "en", locales: ~w(en de fr it es)
+config :locale_bug, LocaleBugWeb.Gettext,
+  default_locale: "en"
 
 # Configures Elixir's Logger
 config :logger, :console,

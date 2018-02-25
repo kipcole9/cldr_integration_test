@@ -7,8 +7,9 @@ defmodule LocaleBug.Mixfile do
       version: "0.0.1",
       elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers,
-      start_permanent: Mix.env == :prod,
+      compilers: [:phoenix, :gettext] ++ Mix.compilers ++ [:cldr],
+      start_permanent: true, # Mix.env == :prod,
+      build_embedded: true,
       deps: deps()
     ]
   end
@@ -27,9 +28,6 @@ defmodule LocaleBug.Mixfile do
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_),     do: ["lib"]
 
-  # Specifies your project dependencies.
-  #
-  # Type `mix help deps` for examples and options.
   defp deps do
     [
       {:phoenix, "~> 1.3.0"},
@@ -38,7 +36,15 @@ defmodule LocaleBug.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:ex_cldr, "~> 1.0"}
+      # {:ex_cldr, path: "../cldr", override: true},
+      {:ex_cldr, "~> 1.0"},
+      {:ex_cldr_numbers, "~> 1.0"},
+      {:ex_cldr_dates_times, "~> 1.0"},
+      {:ex_cldr_units, "~> 1.1"},
+      {:ex_cldr_languages, "~> 0.1"},
+      {:ex_cldr_territories, "~> 1.0"},
+      {:ex_cldr_lists, "~> 1.0"},
+      {:benchee, "~> 0.12", optional: true, only: :dev}
     ]
   end
 end
